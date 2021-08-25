@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="New Dashboard" />
+  <DataSources>
+    <ObjectDataSource Name="Object Data Source" ComponentName="objectDataSource1" DataId="odsTaskData">
+    </ObjectDataSource>
+  </DataSources>
+  <Items>
+    <CustomItem ComponentName="customItemDashboardItem1" Name="Gantt Chart 1" DataSource="objectDataSource1" CustomItemType="ganttCustomItem">
+      <DataItems>
+        <Dimension DataMember="UID" DefaultId="DataItem0" />
+        <Dimension DataMember="ParentUID" DefaultId="DataItem1" />
+        <Dimension DataMember="Name" DefaultId="DataItem2" />
+        <Dimension DataMember="StartDate" DateTimeGroupInterval="None" DefaultId="DataItem3" />
+        <Dimension DataMember="FinishDate" DateTimeGroupInterval="None" DefaultId="DataItem4" />
+      </DataItems>
+      <SliceTables>
+        <SliceTable Name="SliceTable1">
+          <Dimensions>
+            <Dimension DefaultId="DataItem0" />
+            <Dimension DefaultId="DataItem1" />
+            <Dimension DefaultId="DataItem2" />
+            <Dimension DefaultId="DataItem3" />
+            <Dimension DefaultId="DataItem4" />
+          </Dimensions>
+        </SliceTable>
+      </SliceTables>
+      <InteractivityTargets>
+        <Dimension DefaultId="DataItem0" />
+        <Dimension DefaultId="DataItem1" />
+        <Dimension DefaultId="DataItem2" />
+        <Dimension DefaultId="DataItem3" />
+        <Dimension DefaultId="DataItem4" />
+      </InteractivityTargets>
+      <CustomMetadata>
+        <ID ItemType="Dimension" DefaultId="DataItem0" />
+        <ParentID ItemType="Dimension" DefaultId="DataItem1" />
+        <Text ItemType="Dimension" DefaultId="DataItem2" />
+        <StartDate ItemType="Dimension" DefaultId="DataItem3" />
+        <FinishDate ItemType="Dimension" DefaultId="DataItem4" />
+      </CustomMetadata>
+    </CustomItem>
+    <Grid ComponentName="gridDashboardItem1" Name="Grid 1" DataSource="objectDataSource1">
+      <DataItems>
+        <Dimension DataMember="Name" DefaultId="DataItem0" />
+        <Dimension DataMember="UID" DefaultId="DataItem1" />
+        <Dimension DataMember="ParentUID" DefaultId="DataItem2" />
+        <Dimension DataMember="FinishDate" DefaultId="DataItem3" />
+        <Dimension DataMember="StartDate" DefaultId="DataItem4" />
+      </DataItems>
+      <GridColumns>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem0" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem1" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem2" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem3" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem4" />
+        </GridDimensionColumn>
+      </GridColumns>
+      <GridOptions />
+    </Grid>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutGroup Orientation="Vertical">
+        <LayoutItem DashboardItem="customItemDashboardItem1" Weight="1.1932668329177056" />
+        <LayoutItem DashboardItem="gridDashboardItem1" Weight="0.80673316708229437" />
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>
