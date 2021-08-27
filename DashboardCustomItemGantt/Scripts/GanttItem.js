@@ -41,7 +41,6 @@
     function GanttItemViewer(model, $container, options) {
         Dashboard.CustomItemViewer.call(this, model, $container, options);
         this.dxGanttWidget = null;
-        this.dxGanttWidgetSettings = undefined;
     }
 
     GanttItemViewer.prototype = Object.create(Dashboard.CustomItemViewer.prototype);
@@ -49,6 +48,8 @@
 
     GanttItemViewer.prototype._getDataSource = function () {
         var data = [];
+        var datesValid = true;
+
         this.iterateData(function (dataRow) {
             data.push({
                 id: dataRow.getValue('ID')[0],
@@ -58,7 +59,17 @@
                 end: dataRow.getValue('FinishDate')[0],
                 clientDataRow: dataRow
             });
+
+            var currentItem = data[data.length - 1];
+         
+            if ((currentItem.start && !(currentItem.start instanceof Date)) || (currentItem.end && !(currentItem.end instanceof Date)))
+                datesValid = false;
         });
+
+        if (!datesValid) {
+            DevExpress.ui.notify("Gantt: 'Start Date' or 'Finish Date' is not a Date object.", "warning", 3000);
+            return [];
+        }
 
         return data;
     };
@@ -66,6 +77,7 @@
     GanttItemViewer.prototype._getDxGanttWidgetSettings = function () {
         var _this = this;
         return {
+            rootValue: -1,
             tasks: {
                 dataSource: this._getDataSource()
             },
@@ -91,7 +103,9 @@
         };
     };
 
-    GanttItemViewer.prototype.setSelection = function () {
+    GanttItemViewer.prototype.setSelection = function (values) {
+        Object.getPrototypeOf(GanttItemViewer.prototype).setSelection.call(this, values);
+
         var _this = this;
         var tasks = _this.dxGanttWidget.option("tasks.dataSource");
 

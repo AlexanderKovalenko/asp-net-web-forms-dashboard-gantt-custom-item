@@ -2,11 +2,11 @@
 <Dashboard>
   <Title Text="New Dashboard" />
   <DataSources>
-    <ObjectDataSource Name="Object Data Source" ComponentName="objectDataSource1" DataId="odsTaskData">
-    </ObjectDataSource>
+    <ObjectDataSource Name="Object Data Source" ComponentName="objectDataSource1" DataId="odsTaskData" />
   </DataSources>
   <Items>
     <CustomItem ComponentName="customItemDashboardItem1" Name="Gantt Chart 1" DataSource="objectDataSource1" CustomItemType="ganttCustomItem">
+      <InteractivityOptions MasterFilterMode="Single" />
       <DataItems>
         <Dimension DataMember="UID" DefaultId="DataItem0" />
         <Dimension DataMember="ParentUID" DefaultId="DataItem1" />
@@ -45,8 +45,8 @@
         <Dimension DataMember="Name" DefaultId="DataItem0" />
         <Dimension DataMember="UID" DefaultId="DataItem1" />
         <Dimension DataMember="ParentUID" DefaultId="DataItem2" />
-        <Dimension DataMember="FinishDate" DefaultId="DataItem3" />
-        <Dimension DataMember="StartDate" DefaultId="DataItem4" />
+        <Dimension DataMember="FinishDate" DateTimeGroupInterval="None" DefaultId="DataItem3" />
+        <Dimension DataMember="StartDate" DateTimeGroupInterval="None" DefaultId="DataItem4" />
       </DataItems>
       <GridColumns>
         <GridDimensionColumn>
@@ -71,8 +71,8 @@
   <LayoutTree>
     <LayoutGroup>
       <LayoutGroup Orientation="Vertical">
-        <LayoutItem DashboardItem="customItemDashboardItem1" Weight="1.1932668329177056" />
-        <LayoutItem DashboardItem="gridDashboardItem1" Weight="0.80673316708229437" />
+        <LayoutItem DashboardItem="customItemDashboardItem1" Weight="1.2030668192532363" />
+        <LayoutItem DashboardItem="gridDashboardItem1" Weight="0.79693318074676367" />
       </LayoutGroup>
     </LayoutGroup>
   </LayoutTree>
